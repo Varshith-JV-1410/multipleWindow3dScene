@@ -36,3 +36,6 @@ This project is open-sourced under the MIT License.
 ## Acknowledgments
 - The Three.js team for their comprehensive 3D library.
 - x.com/didntdrinkwater for this readme.
+
+## Credits
+- https://github.com/bgstaal/multipleWindow3dScene.git
