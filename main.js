@@ -1,8 +1,6 @@
-import WindowManager from './WindowManager.js'
+import * as THREE from './three.r132.min.js';
+import WindowManager from './WindowManager.js';
 
-
-
-const t = THREE;
 let camera, scene, renderer, world;
 let near, far;
 let pixR = window.devicePixelRatio ? window.devicePixelRatio : 1;
@@ -67,20 +65,20 @@ else
 
 	function setupScene ()
 	{
-		camera = new t.OrthographicCamera(0, 0, window.innerWidth, window.innerHeight, -10000, 10000);
+		camera = new THREE.OrthographicCamera(0, 0, window.innerWidth, window.innerHeight, -10000, 10000);
 		
 		camera.position.z = 2.5;
 		near = camera.position.z - .5;
 		far = camera.position.z + 0.5;
 
-		scene = new t.Scene();
-		scene.background = new t.Color(0.0);
+		scene = new THREE.Scene();
+		scene.background = new THREE.Color(0.0);
 		scene.add( camera );
 
-		renderer = new t.WebGLRenderer({antialias: true, depthBuffer: true});
+		renderer = new THREE.WebGLRenderer({antialias: true, depthBuffer: true});
 		renderer.setPixelRatio(pixR);
 	    
-	  	world = new t.Object3D();
+	  	world = new THREE.Object3D();
 		scene.add(world);
 
 		renderer.domElement.setAttribute("id", "scene");
@@ -124,11 +122,11 @@ else
 		{
 			let win = wins[i];
 
-			let c = new t.Color();
+			let c = new THREE.Color();
 			c.setHSL(i * .1, 1.0, .5);
 
 			let s = 100 + i * 50;
-			let cube = new t.Mesh(new t.BoxGeometry(s, s, s), new t.MeshBasicMaterial({color: c , wireframe: true}));
+			let cube = new THREE.Mesh(new THREE.BoxGeometry(s, s, s), new THREE.MeshBasicMaterial({color: c , wireframe: true}));
 			cube.position.x = win.shape.x + (win.shape.w * .5);
 			cube.position.y = win.shape.y + (win.shape.h * .5);
 
@@ -190,7 +188,7 @@ else
 		let width = window.innerWidth;
 		let height = window.innerHeight
 		
-		camera = new t.OrthographicCamera(0, width, 0, height, -10000, 10000);
+		camera = new THREE.OrthographicCamera(0, width, 0, height, -10000, 10000);
 		camera.updateProjectionMatrix();
 		renderer.setSize( width, height );
 	}
